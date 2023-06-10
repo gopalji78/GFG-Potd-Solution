@@ -1,0 +1,90 @@
+PROBLEM NAME: Arranging the array
+Problem Link: https://practice.geeksforgeeks.org/problems/arranging-the-array1131/1
+
+----------->>Approach 1------->>
+Using Two arrays to store negatives and non-negatives, 
+And then first pushing elements from negatives array to the original, then from the positives array
+T.C = O(n)
+S.C = O(n)
+
+
+______________________________________________________________________________CODE________________________________________________________________________________________________
+void Rearrange(int arr[], int n)
+        {
+            vector<int> neg;
+            vector<int> pos;
+            
+            for (int i=0; i<n; i++) {
+                if (arr[i] < 0) neg.push_back(arr[i]);
+                else pos.push_back(arr[i]);
+            }
+            
+            int i=0;
+            for (auto it: neg) {
+                arr[i] = it;
+                i++;
+            }
+            for (auto it: pos){
+                arr[i] = it;
+                i++;
+            }
+        }
+
+
+--------->>Approach 2----------->>
+Seeing the time and space complexity one can say that, merge sort must me applied
+
+void merge (int arr[], int l, int mid, int h){
+        vector<int> temp;
+        
+        int j = mid+1;
+        for (int i=l; i<=mid; i++){
+            if (arr[i] < 0){
+                temp.push_back(arr[i]);   //will push all the negaitves of first array in temp array
+                continue;
+            }
+            else {
+                while (j<=h && arr[j] < 0) {  
+                    temp.push_back(arr[j]);   //will extract all the negative from the second array and push it into temp array
+                    j++;
+                }
+            }
+            
+            temp.push_back(arr[i]);  //wll execute when all the negatives from first and second array are already pushed in temp array
+        }
+        
+        while (j<=h) {
+            temp.push_back(arr[j]);   //will push all the left elements of second array in temp array
+            j++;
+        }
+        
+        for (int i=l; i<=h; i++) arr[i] = temp[i-l];   // pushing values again in the original array
+    }
+    
+    void mergeSort(int arr[], int l, int h){
+        if (l>=h) return;
+        
+        //simple merge sort
+        int mid = (l+h)/2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid+1, h);
+        merge(arr, l, mid, h);
+    }
+        void Rearrange(int arr[], int n)
+        {
+            mergeSort(arr, 0, n-1);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
