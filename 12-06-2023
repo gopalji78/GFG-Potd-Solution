@@ -1,0 +1,21 @@
+ PROBLEM NAME: Rod Cutting
+ Problem Link: https://practice.geeksforgeeks.org/problems/rod-cutting0840/1
+ 
+ int solver(int prices[], int n, vector<int>& dp) {
+      if (n==0) return 0;
+      
+      if (dp[n] != -1) return dp[n];
+      
+      int ans = INT_MIN;
+      for (int i=0; i<n; i++) {
+          int ele = prices[i] + solver(prices, n-i-1, dp);
+          ans = max(ele, ans);
+      }
+      
+      return dp[n] = ans;
+  }
+  
+    int cutRod(int prices[], int n) {
+        vector<int> dp(n+1, -1);
+        return solver(prices, n, dp);
+    }
