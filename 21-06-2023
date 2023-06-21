@@ -1,0 +1,8 @@
+PROBLEM NAME: REVERSE CODING
+Problem Link: https://practice.geeksforgeeks.org/problems/reverse-coding2452/1
+
+int sumOfNaturals(int n) {
+        long long sum = ((long long) n*(n+1))/2;
+        int mod = 1e9+7;
+        return sum%mod;
+    }
