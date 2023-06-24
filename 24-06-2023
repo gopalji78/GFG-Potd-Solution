@@ -1,0 +1,15 @@
+PROBLEM NAME: Prefix match with other strings
+Problem Link: https://practice.geeksforgeeks.org/problems/prefix-match-with-other-strings/1
+
+int klengthpref(string arr[], int n, int k, string str){  
+        if (k>str.length()) return 0;
+        str = str.substr(0, k);
+        
+        int cnt = 0;
+
+        for (int i=0; i<n; i++) {
+            arr[i] = arr[i].substr(0, k);
+            if (arr[i] == str) cnt++;
+        }
+        return cnt;
+    }
