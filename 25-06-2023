@@ -1,0 +1,21 @@
+PROBLEM NAME: Unique rows in boolean matrix
+Problem Link: https://practice.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1
+ 
+ public:
+    // #define MAX 1000
+    vector<vector<int>> uniqueRow(int M[MAX][MAX],int rows,int col)
+    {
+        set<vector<int>> s;
+        vector<vector<int>> ans;
+        for (int i=0; i<rows; i++) {
+            vector<int> row;
+            for (int j=0; j<col; j++) {
+                row.push_back(M[i][j]);
+            }
+            
+            if (s.find(row) == s.end()) 
+                ans.push_back(row);
+            s.insert(row);
+        }
+        return ans;
+    }
