@@ -1,0 +1,11 @@
+PROBLEM NAME: Maximum Depth Of Binary Tree
+Problem Link: https://practice.geeksforgeeks.org/problems/maximum-depth-of-binary-tree/1
+
+int maxDepth(Node *root) {
+        if (root == NULL) return 0;
+        
+        int leftDepth = maxDepth(root->left);
+        int rightDepth = maxDepth(root->right);
+        
+        return 1+max(rightDepth, leftDepth);
+    }
