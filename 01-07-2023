@@ -1,0 +1,21 @@
+PROBLEM NAME: Number of 1 Bits
+Problem Link: https://practice.geeksforgeeks.org/problems/set-bits0143/1
+
+int setBits(int N) {
+        // Approach 1
+        int totalSetBits = 0;
+        
+        while (N) {
+            if (N&1 == 1) totalSetBits++;
+            
+            N = N>>1;
+        }
+        
+        return totalSetBits;
+        
+    
+        // Approach 2
+        // return __builtin_popcount(N);
+        
+        
+    }
