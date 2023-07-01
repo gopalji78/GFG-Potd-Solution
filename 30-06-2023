@@ -1,0 +1,11 @@
+PROBLEM NAME: Is Binary Number Multiple of 3
+Problem Link: https://practice.geeksforgeeks.org/problems/is-binary-number-multiple-of-30654/1
+
+int isDivisible(string s){
+	    vector<vector<int>> v={{0,1},{2,0},{1,2}};
+	    int state=0;
+	    for(auto c:s) {
+	        state=v[state][c-'0'];
+	    }
+	    return state==0; 
+	}
