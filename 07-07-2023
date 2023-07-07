@@ -1,0 +1,22 @@
+PROBLEM NAME: Merge Without Extra Space
+Problem Link: https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
+
+
+
+
+void merge(long long arr1[], long long arr2[], int n, int m) 
+        { 
+           int h1 = n-1, l2 = 0;
+           
+           while (h1>=0 && l2<m) {
+               if (arr1[h1] > arr2[l2]) {
+                   swap(arr1[h1], arr2[l2]);
+                   h1--;
+                   l2++;
+               }
+               else break;
+           }
+           
+           sort(arr1, arr1+n);
+           sort(arr2, arr2+m);
+        } 
