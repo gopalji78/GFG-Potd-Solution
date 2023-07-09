@@ -1,0 +1,24 @@
+PROBLEM NAME: Smallest Positive missing number
+Problem Link: https://practice.geeksforgeeks.org/problems/smallest-positive-missing-number-1587115621/1
+
+
+int missingNumber(int arr[], int n) 
+    { 
+        for (int i=0; i<n; i++) {
+            int num = arr[i];
+            int numIndex = arr[i]-1;
+            
+            if (numIndex>=0  && numIndex<n) {
+                if (arr[numIndex] != num) {
+                    swap(arr[i], arr[numIndex]);
+                    i--;
+                }
+            }
+        }
+        
+        for (int i=0; i<n; i++) {
+            if (arr[i] != i+1) return i+1; 
+        }
+        return n+1;
+
+    } 
