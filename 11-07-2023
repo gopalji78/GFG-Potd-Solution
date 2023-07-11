@@ -1,0 +1,42 @@
+PROBLEM NAME: Find kth element of spiral matrix
+Problem Link: https://practice.geeksforgeeks.org/problems/find-nth-element-of-spiral-matrix/1
+
+
+int findK(int a[MAX][MAX],int n,int m,int k)
+    {
+ 		int top = 0, bottom = n-1;
+ 		int left = 0, right = m-1;
+ 		
+ 		while (top <= bottom && left <= right) {
+ 		    for (int i=left; i<=right; i++) {
+ 		        k--;
+ 		        if (k==0) return a[top][i];
+ 		    }
+ 		    top++;
+ 		    
+ 		    for (int i=top; i<=bottom; i++) {
+ 		        k--;
+ 		        if (k==0) return a[i][right];
+ 		    }
+ 		    right--;
+ 		    
+ 		    if (left<=right) {
+ 		        for (int i=right; i>=left; i--) {
+ 		            k--;
+ 		            if (k==0) return a[bottom][i];
+ 		        }
+ 		    }
+ 		    bottom--;
+ 		    
+ 		    
+ 		    if (top<=bottom) {
+ 		        for (int i=bottom; i>=top; i--) {
+ 		            k--;
+ 		            if (k==0) return a[i][left];
+ 		        }
+ 		    }
+ 		    left++;
+ 		    
+ 		}
+ 		return -1;
+    }
