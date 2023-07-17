@@ -1,0 +1,22 @@
+PROBLEM NAME: First non-repeating character in a stream
+Problem Link: https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1
+
+string FirstNonRepeating(string A){
+		   string ans = "";
+		   queue<char> q;
+		  // string ans = "";
+		   unordered_map<char, int> mpp;
+		   
+		   for (auto ch: A) {
+		       mpp[ch]++;
+		       while (!q.empty() && mpp[q.front()] > 1) 
+		        q.pop();
+		       
+		       if (mpp[ch] == 1) 
+		        q.push(ch);
+		        
+		        if (q.empty()) ans += '#';
+		        else ans += q.front();
+		   }
+		   return ans;
+		}
